@@ -7,7 +7,7 @@ import { Camera, Briefcase, Star, ChevronRight, Award, MapPin, Calendar, Clock, 
 import Container from '@/components/common/Container';
 
 const team = [
-  { name: 'Mr. Janidu Perera', role: 'Founder & CEO', image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop' },
+  { name: 'Mr. Harsha Kodippili', role: 'Founder & CEO', image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop' },
   { name: 'Ar. Sameea Wijetunge', role: 'Head Architect', image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop' },
   { name: 'Eng. Priyantha Silva', role: 'Lead Structural Engineer', image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop' },
   { name: 'Ms. Nelum Jayawardene', role: 'Design Director', image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop' },
@@ -39,7 +39,7 @@ export default function AboutPage() {
                   <div className="absolute inset-0 border-[12px] border-gold transform translate-x-8 translate-y-8 -z-10" />
                   <Image
                      src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&h=800&fit=crop"
-                     alt="Mr. Janidu Perera"
+                     alt="Mr. Harsha Kodippili"
                      fill
                      className="object-cover grayscale hover:grayscale-0 transition-all duration-[3000ms]"
                   />
@@ -53,7 +53,7 @@ export default function AboutPage() {
                <div className="lg:col-span-7 space-y-10 group">
                   <div className="mb-12">
                      <span className="text-gold text-[10px] uppercase font-bold tracking-[0.5em] mb-4 block italic">CEO & Principal Strategist</span>
-                     <h2 className="text-4xl md:text-5xl font-serif text-gold mb-8 uppercase tracking-tight">Mr. Janidu Perera</h2>
+                     <h2 className="text-4xl md:text-5xl font-serif text-gold mb-8 uppercase tracking-tight">Mr. Harsha Kodippili</h2>
                      <div className="space-y-6 text-cream/70 text-lg md:text-xl font-light leading-relaxed italic border-l border-gold/20 pl-10">
                         <p>
                           "My journey began in 2008 with a simple realization: architecture in the tropics was either too grounded in the past or too disconnected from the soul of the land. At Elite Homes Lanka, we bridges that gap."
@@ -95,7 +95,7 @@ export default function AboutPage() {
 
             <div className="relative space-y-24 max-w-4xl mx-auto before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-gold/20 before:to-transparent">
                {[
-                  { yr: '2008', t: 'The Foundation', d: 'Janidu Perera establishes a boutique architectural consultancy focused on coastal luxury.' },
+                  { yr: '2008', t: 'The Foundation', d: 'Harsha Kodippili establishes a boutique architectural consultancy focused on coastal luxury.' },
                   { yr: '2014', t: 'Design-Build Integration', d: 'Elite Homes scales into a full-service construction firm to ensure surgical precision in execution.' },
                   { yr: '2019', t: 'Global Expansion', d: 'Strategic partnerships established in the Maldives and Singapore for ultra-luxury residential builds.' },
                   { yr: '2024', t: 'The Gold Standard', d: 'Named "Best Sustainable Villa Provider" at the Sri Lankan Architecture Awards.' },

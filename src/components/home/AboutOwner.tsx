@@ -31,7 +31,7 @@ export default function AboutOwner() {
               <div className="absolute inset-0 bg-navy/10 group-hover:bg-transparent transition-colors duration-500 z-10" />
               <Image
                 src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&h=800&fit=crop"
-                alt="Mr. Janidu Perera - Founder & CEO"
+                alt="Mr. Harsha Kodippili - Founder & CEO"
                 fill
                 className="object-cover"
               />
@@ -54,7 +54,7 @@ export default function AboutOwner() {
             </h2>
             <div className="space-y-6 text-navy/70 leading-relaxed font-light text-lg mb-12">
               <p>
-                Founded by <span className="text-navy font-bold">Mr. Janidu Perera</span>, Elite Homes Lanka has redefined the landscape of tropical luxury architecture. Our firm was born from a vision to blend timeless design with sustainable practices, creating spaces that breathe and inspire.
+                Founded by <span className="text-navy font-bold">Mr. Harsha Kodippili</span>, Elite Homes Lanka has redefined the landscape of tropical luxury architecture. Our firm was born from a vision to blend timeless design with sustainable practices, creating spaces that breathe and inspire.
               </p>
               <p>
                 With over 17 years of experience, we have transformed the dreams of high-net-worth individuals and institutional clients into iconic landmarks across Sri Lanka, Maldives, and Singapore.

@@ -11,7 +11,7 @@ const posts = [
     slug: 'sustainable-tropical-design-principles',
     title: '5 Sustainable Design Principles for Tropical Sri Lankan Homes',
     excerpt: 'Explore how we blend ancestral wisdom with modern net-zero engineering to keep luxury homes cool and carbon-neutral.',
-    author: 'Mr. Janidu Perera',
+    author: 'Mr. Harsha Kodippili',
     date: 'April 12, 2026',
     readTime: '08 Min Read',
     category: 'Sustainability',

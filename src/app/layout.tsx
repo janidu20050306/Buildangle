@@ -7,7 +7,7 @@ import AIChatbot from '@/components/common/AIChatbot';
 
 export const metadata: Metadata = {
   title: 'Elite Homes Lanka | Architects of Timeless Luxury',
-  description: 'The gold standard in tropical luxury construction. Build your legacy with Sri Lanka\'s premier design-build empire. Founded by Mr. Janidu Perera.',
+  description: 'The gold standard in tropical luxury construction. Build your legacy with Sri Lanka\'s premier design-build empire. Founded by Mr. Harsha Kodippili.',
   keywords: ['Luxury Homes Sri Lanka', 'Elite Construction Colombo', 'Sustainable Architecture', 'Modern Villa Design', 'Elite Homes Lanka'],
   openGraph: {
     title: 'Elite Homes Lanka | Architects of Timeless Luxury',

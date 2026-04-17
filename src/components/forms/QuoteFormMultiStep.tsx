@@ -353,7 +353,7 @@ export default function QuoteFormMultiStep() {
                <span className="italic text-gold italic-emerald">Mastery Initialised.</span>
             </h2>
             <p className="text-cream/60 max-w-lg mx-auto mb-16 font-light text-lg leading-relaxed italic">
-               "Your inquiry has been elevated to our VIP concierge. Mr Janidu Perera's executive office will review your requirements and reach out within 24 business hours."
+               "Your inquiry has been elevated to our VIP concierge. Mr Harsha Kodippili's executive office will review your requirements and reach out within 24 business hours."
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                <Link
