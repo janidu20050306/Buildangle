@@ -4,7 +4,7 @@ import Container from './common/Container';
 
 const links = {
   company: [
-    { name: 'About Elite Homes', href: '/about' },
+    { name: 'About Buildangle', href: '/about' },
     { name: 'The Process', href: '/services#process' },
     { name: 'Meet the Founder', href: '/about#founder' },
     { name: 'Architecture Awards', href: '/about#awards' },
@@ -30,8 +30,8 @@ export default function Footer() {
           {/* Brand Info */}
           <div className="flex flex-col">
             <Link href="/" className="mb-8">
-              <span className="text-3xl font-serif font-bold text-gold tracking-tight">ELITE HOMES</span>
-              <span className="text-[10px] tracking-widest block text-cream/50 mt-1 uppercase italic font-medium">LANKA • SINCE 2008</span>
+              <span className="text-3xl font-serif font-bold text-gold tracking-tight">BUILDANGLE</span>
+              <span className="text-[10px] tracking-widest block text-cream/50 mt-1 uppercase italic font-medium">SINCE 2008</span>
             </Link>
             <p className="text-cream/60 leading-relaxed mb-8 max-w-xs italic font-serif">
               "Building more than structures, we craft legacies that harmonize with nature and elevate the standard of living."
@@ -91,7 +91,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center">
                 <Mail className="text-gold mr-4 shrink-0" size={20} />
-                <span className="text-cream/70">inquire@elitehomes.lk</span>
+                <span className="text-cream/70">inquire@buildangle.lk</span>
               </li>
             </ul>
           </div>
@@ -99,7 +99,7 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-gold/10 pt-12 flex flex-col md:flex-row justify-between items-center text-xs tracking-widest text-cream/40 uppercase">
-          <p className="mb-4 md:mb-0">© 2026 Elite Homes Lanka. All Rights Reserved.</p>
+          <p className="mb-4 md:mb-0">© 2026 Buildangle. All Rights Reserved.</p>
           <div className="flex space-x-8">
             {links.legal.map((link) => (
               <Link key={link.name} href={link.href} className="hover:text-cream transition-colors">

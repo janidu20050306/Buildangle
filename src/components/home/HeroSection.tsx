@@ -28,21 +28,22 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: 'easeOut' }}
         >
-          <span className="text-gold text-xs md:text-sm uppercase tracking-[0.4em] mb-6 block font-medium">
-            Architects of Timeless Luxury
+          <span className="text-gold text-xs md:text-sm uppercase tracking-[0.4em] mb-6 block font-medium tracking-widest relative">
+            <span className="absolute inset-0 blur-md bg-gold/30 rounded-full"></span>
+            <span className="relative">Architects of Timeless Luxury</span>
           </span>
-          <h1 className="text-5xl md:text-8xl font-serif text-cream mb-8 leading-[1.1]">
+          <h1 className="text-5xl md:text-8xl font-serif text-cream mb-8 leading-[1.1] relative">
             Where Vision Meets <br />
-            <span className="italic text-gold">Mastery</span> in Sri Lanka
+            <span className="italic gradient-text-gold drop-shadow-[0_0_20px_rgba(212,175,55,0.4)]">Mastery</span> in Sri Lanka
           </h1>
-          <p className="text-cream/70 text-lg md:text-xl max-w-2xl mx-auto mb-12 font-light leading-relaxed">
+          <p className="text-cream/80 text-lg md:text-xl max-w-2xl mx-auto mb-12 font-light leading-relaxed">
             Leading the way in ultra-luxury tropical residential and institutional design-build excellence since 2008.
           </p>
 
-          <div className="flex flex-col md:flex-row items-center justify-center gap-6">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6 relative z-30">
             <Link
               href="/projects"
-              className="bg-gold hover:bg-gold/90 text-navy px-10 py-4 rounded-sm text-sm uppercase tracking-widest font-bold transition-all transform hover:scale-105"
+              className="bg-gold hover:bg-gold/90 text-navy px-12 py-5 rounded-sm text-sm uppercase tracking-widest font-black transition-all transform hover:scale-105 shadow-[0_0_30px_rgba(212,175,55,0.4)] hover:shadow-[0_0_50px_rgba(212,175,55,0.6)]"
             >
               Explore Our Legacy
             </Link>

@@ -33,7 +33,7 @@ export default function NewsletterSignup() {
               <input
                 type="email"
                 required
-                placeholder="Ex. info@elitehomes.lk"
+                placeholder="Ex. info@buildangle.lk"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="flex-grow bg-white/5 border border-gold/20 px-6 py-4 rounded-sm text-cream focus:outline-none focus:border-gold transition-colors text-sm font-light italic"

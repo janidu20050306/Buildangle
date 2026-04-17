@@ -56,7 +56,7 @@ export default function AboutPage() {
                      <h2 className="text-4xl md:text-5xl font-serif text-gold mb-8 uppercase tracking-tight">Mr. Harsha Kodippili</h2>
                      <div className="space-y-6 text-cream/70 text-lg md:text-xl font-light leading-relaxed italic border-l border-gold/20 pl-10">
                         <p>
-                          "My journey began in 2008 with a simple realization: architecture in the tropics was either too grounded in the past or too disconnected from the soul of the land. At Elite Homes Lanka, we bridges that gap."
+                          "My journey began in 2008 with a simple realization: architecture in the tropics was either too grounded in the past or too disconnected from the soul of the land. At Buildangle, we bridge that gap."
                         </p>
                         <p>
                           Over the past 17 years, we have scaled from a boutique design house to a $150M+ design-build empire. Every project we undertake is personal—a search for structural perfection and environmental harmony.
@@ -96,7 +96,7 @@ export default function AboutPage() {
             <div className="relative space-y-24 max-w-4xl mx-auto before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-gold/20 before:to-transparent">
                {[
                   { yr: '2008', t: 'The Foundation', d: 'Harsha Kodippili establishes a boutique architectural consultancy focused on coastal luxury.' },
-                  { yr: '2014', t: 'Design-Build Integration', d: 'Elite Homes scales into a full-service construction firm to ensure surgical precision in execution.' },
+                  { yr: '2014', t: 'Design-Build Integration', d: 'Buildangle scales into a full-service construction firm to ensure surgical precision in execution.' },
                   { yr: '2019', t: 'Global Expansion', d: 'Strategic partnerships established in the Maldives and Singapore for ultra-luxury residential builds.' },
                   { yr: '2024', t: 'The Gold Standard', d: 'Named "Best Sustainable Villa Provider" at the Sri Lankan Architecture Awards.' },
                ].map((item, i) => (

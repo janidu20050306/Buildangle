@@ -41,7 +41,7 @@ export default function Navigation() {
           {/* Logo */}
           <Link href="/" className="flex flex-col">
             <span className="text-2xl font-serif font-bold tracking-tighter text-gold leading-none">
-              ELITE HOMES
+              BUILDANGLE
             </span>
             <span className="text-[10px] tracking-[0.3em] uppercase text-cream/70 mt-1">
               LANKA • EST 2008

@@ -35,19 +35,20 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" className="h-full scroll-smooth">
-      <body className="flex flex-col min-h-full font-sans overflow-x-hidden">
-        <Navigation />
+    <html lang="en" className="dark scroll-smooth">
+      <body className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-navy text-cream min-h-screen mesh-bg selection:bg-gold/30 selection:text-gold`}>
+        <div className="noise-overlay pointer-events-none" />
         <CustomCursor />
-        <AIChatbot />
-        <main className="flex-grow pt-24 md:pt-32">
+        <Navigation />
+        <main className="min-h-screen relative z-10 flex flex-col">
           {children}
         </main>
         <Footer />
+        <AIChatbot />
       </body>
     </html>
   );

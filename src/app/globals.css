@@ -99,30 +99,78 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
 
-/* Luxury Utilities */
+/* Luxury & Continuum Utilities */
 .glass {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(15, 20, 25, 0.4);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.glass-neon {
+  background: rgba(15, 20, 25, 0.2);
+  backdrop-filter: blur(30px) saturate(200%);
+  border: 1px solid rgba(45, 90, 77, 0.3);
+  box-shadow: 0 0 20px rgba(45, 90, 77, 0.2), inset 0 0 20px rgba(45, 90, 77, 0.1);
+}
+
+.gradient-text-gold {
+  background: linear-gradient(135deg, #FFEFBA 0%, #D4AF37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.mesh-bg {
+  background-color: var(--navy);
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(45, 90, 77, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(212, 175, 55, 0.1) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(45, 90, 77, 0.15) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(212, 175, 55, 0.1) 0px, transparent 50%);
 }
 
 .gradient-sunset {
   background: linear-gradient(135deg, var(--gold), var(--emerald), var(--navy));
+  background-size: 200% 200%;
+  animation: gradientFlow 15s ease infinite;
 }
 
 .gradient-sustainable {
-  background: linear-gradient(135deg, var(--cream), var(--emerald), var(--navy));
+  background: linear-gradient(135deg, var(--emerald), var(--charcoal), var(--navy));
+  background-size: 200% 200%;
+  animation: gradientFlow 15s ease infinite;
 }
 
 .gradient-elegance {
-  background: linear-gradient(135deg, var(--white), var(--gold), var(--navy));
+  background: linear-gradient(135deg, var(--navy), var(--gold), var(--navy));
+  background-size: 200% 200%;
+  animation: gradientFlow 15s ease infinite;
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .section-padding {
-  @apply py-20 px-6 md:px-12 lg:px-24;
+  @apply py-24 px-6 md:px-12 lg:px-24;
 }
 
 .premium-card {
-  @apply bg-white dark:bg-charcoal/20 border border-navy/5 dark:border-gold/10 rounded-xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-1;
+  @apply bg-charcoal/40 border border-gold/10 rounded-2xl transition-all duration-500 hover:shadow-[0_0_40px_-10px_rgba(212,175,55,0.3)] hover:-translate-y-2 hover:border-gold/30 backdrop-blur-md;
+}
+
+/* Continuum specific noise overlay */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }

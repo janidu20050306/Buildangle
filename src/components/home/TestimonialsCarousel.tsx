@@ -12,7 +12,7 @@ const testimonials = [
     role: 'Business Owners',
     company: 'Jayawardene Enterprises',
     photo: 'https://images.unsplash.com/photo-1544168190-79c17527004f?w=400&h=400&fit=crop',
-    quote: 'Elite Homes Lanka transformed our vision into reality. The attention to detail, sustainable design, and craftsmanship are unmatched in Sri Lanka. They didn\'t just build a house; they built our legacy.',
+    quote: 'Buildangle transformed our vision into reality. The attention to detail, sustainable design, and craftsmanship are unmatched in Sri Lanka. They didn\'t just build a house; they built our legacy.',
     rating: 5,
   },
   {

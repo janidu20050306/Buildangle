@@ -28,7 +28,7 @@ export default function ContactPage() {
              <div className="lg:col-span-5 flex flex-col justify-center space-y-12 h-full">
                 <div className="group border-l border-gold/20 pl-8 hover:border-gold transition-colors duration-500">
                    <h4 className="text-[10px] uppercase font-bold text-navy/40 mb-4 tracking-[0.3em] font-black italic">Email Connectivity</h4>
-                   <Link href="mailto:inquire@elitehomes.lk" className="text-3xl font-serif text-navy hover:text-gold transition-colors block mb-2 underline decoration-gold/20 underline-offset-[12px]">inquire@elitehomes.lk</Link>
+                   <Link href="mailto:inquire@buildangle.lk" className="text-3xl font-serif text-navy hover:text-gold transition-colors block mb-2 underline decoration-gold/20 underline-offset-[12px]">inquire@buildangle.lk</Link>
                    <p className="text-xs text-navy/40 font-bold uppercase tracking-widest">Response within 24 business hours.</p>
                 </div>
                 

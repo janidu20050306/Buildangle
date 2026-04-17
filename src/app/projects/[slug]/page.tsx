@@ -130,7 +130,7 @@ export default function ProjectDetailPage({ params }: ProjectPageProps) {
                    </h2>
                    <div className="space-y-6 text-navy/70 leading-relaxed font-light text-lg">
                       <p>
-                        Elite Homes Lanka was tasked with creating a residence that serves as a quiet refuge from the bustling energy of {project.location}. The architectural response focuses on materiality and natural ventilation, utilizing traditional craftsmanship techniques updated for modern sustainability standards.
+                        Buildangle was tasked with creating a residence that serves as a quiet refuge from the bustling energy of {project.location}. The architectural response focuses on materiality and natural ventilation, utilizing traditional craftsmanship techniques updated for modern sustainability standards.
                       </p>
                       <p>
                         The interior features open-plan layouts that flow seamlessly into lush green spaces, ensuring that every corner of the home connects with the tropical environment. Custom-crafted teak elements and locally-sourced stone provide a tactile richness that ages beautifully.
@@ -293,7 +293,7 @@ export default function ProjectDetailPage({ params }: ProjectPageProps) {
             <div className="max-w-4xl mx-auto flex flex-col items-center text-center space-y-8">
                <Star className="text-gold" fill="currentColor" size={32} />
                <p className="text-2xl md:text-3xl font-serif italic font-light leading-relaxed">
-                  "The transformation of Mistwood Estate was nothing short of miraculous. Elite Homes Lanka understood the emotional value of the property and elevated it beyond our wildest expectations."
+                  "The transformation of Mistwood Estate was nothing short of miraculous. Buildangle understood the emotional value of the property and elevated it beyond our wildest expectations."
                </p>
                <div className="flex flex-col items-center">
                   <span className="text-xl font-serif text-gold uppercase tracking-widest">Mr. Awantha Wickramasinghe</span>

@@ -8,7 +8,7 @@ export default function AIChatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<{ role: 'user' | 'assistant', content: string }[]>([
-    { role: 'assistant', content: "Greetings. I am Elite Homes' AI Design Strategist. How may I assist with your architectural vision today?" }
+    { role: 'assistant', content: "Greetings. I am Buildangle's AI Design Strategist. How may I assist with your architectural vision today?" }
   ]);
   const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -40,7 +40,7 @@ export default function AIChatbot() {
       setMessages(prev => [...prev, { role: 'assistant', content: data.content }]);
     } catch (error) {
        console.error(error);
-       setMessages(prev => [...prev, { role: 'assistant', content: "Apologies, our executive AI link is momentarily saturated. Please contact our human concierge desk at info@elitehomes.lk." }]);
+       setMessages(prev => [...prev, { role: 'assistant', content: "Apologies, our executive AI link is momentarily saturated. Please contact our human concierge desk at info@buildangle.lk." }]);
     } finally {
       setIsLoading(false);
     }
@@ -126,7 +126,7 @@ export default function AIChatbot() {
                   </button>
                </div>
                <div className="mt-4 flex items-center justify-between text-[8px] uppercase tracking-widest text-cream/20 font-black italic">
-                  <span>Elite Homes Encryption Active</span>
+                  <span>Buildangle Encryption Active</span>
                   <Link href="/quote" className="text-gold/40 hover:text-gold flex items-center">
                      Book Consultation <ArrowRight size={8} className="ml-1" />
                   </Link>
