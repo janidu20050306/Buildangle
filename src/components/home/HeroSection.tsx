@@ -21,14 +21,14 @@ export default function HeroSection() {
     <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
       {/* Background Media */}
       <div className="absolute inset-0 z-0">
-        {/* Initial Image Background - Clear & Bright */}
+        {/* Initial Image Background */}
         <motion.div style={{ y }} className="absolute inset-0 z-0 -mt-16">
           <Image
             src="/01.jpg"
             alt="Buildangle Construction"
             fill
             priority
-            className="object-cover brightness-100"
+            className="object-cover brightness-90"
           />
         </motion.div>
         
@@ -39,15 +39,15 @@ export default function HeroSection() {
             muted
             loop
             playsInline
-            className="w-full h-full object-cover brightness-100"
+            className="w-full h-full object-cover"
           >
             <source src="/02.mp4" type="video/mp4" />
           </video>
         </div>
         
-        {/* Lighter Overlay - More Transparent */}
-        <div className="absolute inset-0 bg-gradient-to-r from-navy/50 via-navy/30 to-navy/20 z-10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/20 to-transparent z-12" />
+        {/* Darker Overlay for better text visibility */}
+        <div className="absolute inset-0 bg-gradient-to-r from-navy/80 via-navy/60 to-navy/50 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-navy/30 to-transparent z-12" />
         
         {/* 3D Scene Overlay */}
         <motion.div style={{ opacity }} className="absolute inset-0 z-15">
@@ -62,19 +62,19 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="flex flex-wrap items-center justify-center gap-4 mb-8"
+            className="flex flex-wrap items-center justify-center gap-3 mb-8"
           >
-            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10">
-              <Star size={16} className="text-orange" fill="currentColor" />
-              <span className="text-white text-sm font-medium">ISO 9001 Certified</span>
+            <div className="flex items-center gap-2 bg-orange/90 px-5 py-2.5 rounded-full shadow-lg">
+              <Star size={18} className="text-white" fill="currentColor" />
+              <span className="text-white text-sm font-bold">ISO 9001</span>
             </div>
-            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10">
-              <CheckCircle size={16} className="text-orange" />
-              <span className="text-white text-sm font-medium">15+ Years Experience</span>
+            <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-5 py-2.5 rounded-full border border-white/30">
+              <CheckCircle size={18} className="text-white" />
+              <span className="text-white text-sm font-semibold">15+ Years</span>
             </div>
-            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10">
-              <CheckCircle size={16} className="text-orange" />
-              <span className="text-white text-sm font-medium">500+ Projects</span>
+            <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-5 py-2.5 rounded-full border border-white/30">
+              <CheckCircle size={18} className="text-white" />
+              <span className="text-white text-sm font-semibold">500+ Projects</span>
             </div>
           </motion.div>
 
