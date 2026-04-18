@@ -4,11 +4,21 @@ import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeft, ArrowRight, MapPin, Calendar, Compass } from 'lucide-react';
+import { ArrowLeft, ArrowRight, MapPin, Calendar, Target, TrendingUp } from 'lucide-react';
 import Container from '../common/Container';
 import type { Project } from '@/lib/constants';
 
-export default function FeaturedProjects({ projects }: { projects: Project[] }) {
+interface FeaturedProjectsProps {
+  projects: Project[];
+}
+
+const metrics = [
+  { icon: Target, label: 'Challenge', value: 'Limited space, maximum luxury' },
+  { icon: TrendingUp, label: 'Solution', value: 'Vertical design + smart layout' },
+  { icon: TrendingUp, label: 'Result', value: '40% more space utilization' },
+];
+
+export default function FeaturedProjects({ projects }: FeaturedProjectsProps) {
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const safeProjects = projects.length ? projects : [];
@@ -22,46 +32,46 @@ export default function FeaturedProjects({ projects }: { projects: Project[] }) 
   const project = safeProjects[index];
 
   return (
-    <section className="section-padding bg-navy text-cream overflow-hidden">
+    <section className="py-24 bg-navy text-white overflow-hidden">
       <Container>
-        <div className="flex flex-col md:flex-row items-center justify-between mb-16">
+        <div className="flex flex-col md:flex-row items-end justify-between mb-16">
           <div className="max-w-xl">
             <motion.span
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-gold text-xs uppercase tracking-[0.4em] mb-4 block font-bold"
+              className="text-orange text-xs uppercase tracking-[0.4em] mb-4 block font-bold"
             >
-              Elite Projects Portfolio
+              Featured Work
             </motion.span>
             <motion.h2
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-4xl md:text-5xl font-serif text-cream uppercase tracking-tight"
+              className="text-4xl md:text-5xl font-heading font-bold text-white"
             >
-              Flagship <span className="italic">Masterpieces</span>
+              Projects That <span className="text-orange">Speak</span> For Themselves
             </motion.h2>
           </div>
           
           <div className="flex space-x-4 mt-8 md:mt-0">
             <button
               onClick={() => paginate(-1)}
-              className="p-4 border border-gold/20 hover:bg-gold hover:text-navy transition-all duration-300 rounded-full"
+              className="p-4 border border-white/20 hover:bg-orange hover:border-orange transition-all duration-300 rounded-full"
             >
               <ArrowLeft size={24} />
             </button>
             <button
               onClick={() => paginate(1)}
-              className="p-4 border border-gold/20 hover:bg-gold hover:text-navy transition-all duration-300 rounded-full"
+              className="p-4 border border-white/20 hover:bg-orange hover:border-orange transition-all duration-300 rounded-full"
             >
               <ArrowRight size={24} />
             </button>
           </div>
         </div>
 
-        <div className="relative h-[600px] md:h-[700px] w-full">
+        <div className="relative h-[650px] md:h-[700px] w-full">
           <AnimatePresence initial={false} custom={direction} mode="wait">
             <motion.div
               key={index}
@@ -69,10 +79,11 @@ export default function FeaturedProjects({ projects }: { projects: Project[] }) 
               initial={{ opacity: 0, x: direction > 0 ? 300 : -300 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: direction > 0 ? -300 : 300 }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute inset-0 grid grid-cols-1 lg:grid-cols-12 gap-12"
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute inset-0 grid grid-cols-1 lg:grid-cols-12 gap-8"
             >
-              <div className="lg:col-span-8 relative group overflow-hidden rounded-sm h-[400px] lg:h-full">
+              {/* Image Side */}
+              <div className="lg:col-span-7 relative group overflow-hidden rounded-2xl h-[350px] lg:h-full">
                 <Image
                   src={project.image}
                   alt={project.title}
@@ -80,57 +91,70 @@ export default function FeaturedProjects({ projects }: { projects: Project[] }) 
                   className="object-cover transition-transform duration-1000 group-hover:scale-105"
                   priority
                 />
-                <div className="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-navy/90 to-transparent flex flex-col justify-end lg:hidden">
-                   <h3 className="text-3xl font-serif text-gold mb-2">{project.title}</h3>
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/30 to-transparent" />
+                
+                {/* Quick Stats Overlay */}
+                <div className="absolute bottom-6 left-6 right-6 flex gap-4">
+                  <div className="bg-white/10 backdrop-blur-sm px-4 py-3 rounded-lg">
+                    <div className="text-orange text-xs uppercase tracking-wider">Type</div>
+                    <div className="text-white font-semibold">{project.category}</div>
+                  </div>
+                  <div className="bg-white/10 backdrop-blur-sm px-4 py-3 rounded-lg">
+                    <div className="text-orange text-xs uppercase tracking-wider">Year</div>
+                    <div className="text-white font-semibold">{project.year}</div>
+                  </div>
+                  <div className="bg-white/10 backdrop-blur-sm px-4 py-3 rounded-lg flex items-center">
+                    <MapPin size={16} className="text-orange mr-2" />
+                    <div className="text-white font-semibold">{project.location}</div>
+                  </div>
                 </div>
               </div>
 
-              <div className="lg:col-span-4 flex flex-col justify-center h-full">
-                <div className="space-y-8">
-                  <div className="flex flex-wrap gap-4">
-                    <span className="bg-gold/10 border border-gold/30 text-gold text-[10px] uppercase font-bold tracking-widest px-4 py-1.5 rounded-full">
-                      {project.category}
-                    </span>
-                    <span className="bg-cream/5 border border-cream/20 text-cream/70 text-[10px] uppercase font-bold tracking-widest px-4 py-1.5 rounded-full flex items-center">
-                      <Calendar size={12} className="mr-1.5" />
-                      {project.year}
-                    </span>
-                  </div>
-
-                  <h3 className="text-4xl md:text-5xl font-serif text-cream leading-tight">
+              {/* Content Side */}
+              <div className="lg:col-span-5 flex flex-col justify-center h-full">
+                <div className="space-y-6">
+                  {/* Project Name */}
+                  <h3 className="text-3xl md:text-4xl font-heading font-bold text-white leading-tight">
                     {project.title}
                   </h3>
 
-                  <div className="flex items-center text-gold/80 italic font-serif">
-                    <MapPin size={20} className="mr-2" />
-                    {project.location}
-                  </div>
-
-                  <p className="text-cream/60 leading-relaxed font-light text-lg">
+                  {/* Brief Description */}
+                  <p className="text-gray-300 leading-relaxed text-lg">
                     {project.description}
                   </p>
 
-                  <div className="pt-10 flex flex-col sm:flex-row gap-6">
+                  {/* Problem/Solution/Result Cards */}
+                  <div className="grid grid-cols-3 gap-4 pt-4">
+                    {metrics.map((m, i) => (
+                      <div key={m.label} className="bg-white/5 border border-white/10 p-4 rounded-xl">
+                        <m.icon size={20} className="text-orange mb-2" />
+                        <div className="text-orange text-xs uppercase tracking-wider mb-1">{m.label}</div>
+                        <div className="text-white text-sm font-medium">{m.value}</div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* CTAs */}
+                  <div className="pt-6 flex flex-col sm:flex-row gap-4">
                     <Link
                       href={`/projects/${project.slug}`}
-                      className="group flex items-center justify-between border border-gold/40 hover:border-gold px-8 py-5 text-sm uppercase tracking-[0.2em] font-bold text-gold bg-gold/5 hover:bg-gold hover:text-navy transition-all duration-500"
+                      className="flex items-center justify-center bg-orange hover:bg-orange-dark text-white px-8 py-4 font-semibold rounded-lg transition-all hover:shadow-lg hover:shadow-orange/30"
                     >
-                      View Case Study
-                      <ArrowRight size={20} className="ml-4 transition-transform group-hover:translate-x-2" />
+                      View Full Case Study
                     </Link>
                     <Link
-                      href={`/projects/${project.slug}#3d`}
-                      className="group flex items-center justify-center space-x-2 text-xs uppercase tracking-widest font-bold text-cream underline decoration-gold/40 underline-offset-[12px] hover:text-gold transition-colors"
+                      href="/projects"
+                      className="flex items-center justify-center border border-white/20 text-white hover:bg-white hover:text-navy px-8 py-4 font-semibold rounded-lg transition-all"
                     >
-                      <Compass size={16} />
-                      <span>Explore 3D Virtual Tour</span>
+                      See All Projects
                     </Link>
                   </div>
                 </div>
 
-                <div className="mt-16 flex items-center text-cream/20 space-x-6">
-                  <span className="text-3xl font-serif font-black">{`0${index + 1}`}</span>
-                  <div className="h-[1px] w-20 bg-gold/20" />
+                {/* Pagination Indicator */}
+                <div className="mt-12 flex items-center text-white/30 space-x-4">
+                  <span className="text-2xl font-heading font-bold">{`0${index + 1}`}</span>
+                  <div className="h-[1px] w-16 bg-white/20" />
                   <span className="text-sm font-medium uppercase tracking-[0.4em]">{`OF 0${safeProjects.length}`}</span>
                 </div>
               </div>

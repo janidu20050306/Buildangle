@@ -1,6 +1,7 @@
 import HeroSection from '@/components/home/HeroSection';
-import AboutOwner from '@/components/home/AboutOwner';
-import ValuesSection from '@/components/home/ValuesSection';
+import SocialProofSection from '@/components/home/SocialProofSection';
+import AboutSection from '@/components/home/AboutSection';
+import ProcessSection from '@/components/home/ProcessSection';
 import ServicesPreview from '@/components/home/ServicesPreview';
 import FeaturedProjects from '@/components/home/FeaturedProjects';
 import TestimonialsCarousel from '@/components/home/TestimonialsCarousel';
@@ -13,8 +14,9 @@ export default async function Home() {
   return (
     <>
       <HeroSection />
-      <AboutOwner />
-      <ValuesSection />
+      <SocialProofSection />
+      <AboutSection />
+      <ProcessSection />
       <ServicesPreview />
       <FeaturedProjects projects={featuredProjects} />
       <TestimonialsCarousel />
