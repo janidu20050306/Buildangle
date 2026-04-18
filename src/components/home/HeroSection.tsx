@@ -18,11 +18,11 @@ export default function HeroSection() {
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   return (
-    <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
       {/* Background Media */}
       <div className="absolute inset-0 z-0">
         {/* Initial Image Background - Clear & Bright */}
-        <motion.div style={{ y }} className="absolute inset-0 z-0">
+        <motion.div style={{ y }} className="absolute inset-0 z-0 -mt-16">
           <Image
             src="/01.jpg"
             alt="Buildangle Construction"
