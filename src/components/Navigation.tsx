@@ -55,7 +55,7 @@ export default function Navigation() {
           </div>
 
           {/* CTA Button */}
-          <div className="hidden lg:flex items-center gap-6">
+          <div className="hidden lg:flex items-center gap-4">
             <a 
               href="tel:+94112345678" 
               className="flex items-center gap-2 text-sm font-medium text-navy hover:text-orange transition-colors"
@@ -63,12 +63,6 @@ export default function Navigation() {
               <Phone size={18} className="text-orange" />
               <span className="font-semibold">+94 11 234 5678</span>
             </a>
-            <Link
-              href="/quote"
-              className="bg-orange hover:bg-orange-dark text-white px-8 py-3.5 text-sm font-bold rounded-lg transition-all hover:shadow-lg hover:shadow-orange/30 hover:-translate-y-0.5"
-            >
-              Get Quote
-            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -102,13 +96,6 @@ export default function Navigation() {
                     {link.name}
                   </Link>
                 ))}
-                <Link
-                  href="/quote"
-                  className="bg-orange text-white text-center py-4 font-bold rounded-lg mt-4"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Get Free Quote
-                </Link>
               </div>
             </Container>
           </motion.div>
