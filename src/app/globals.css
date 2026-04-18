@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @font-face {
   font-family: 'Playfair Display';
@@ -55,6 +56,9 @@
 
   --animate-fade-in: fade-in 0.5s ease-out;
   --animate-slide-up: slide-up 0.5s ease-out;
+  --animate-scale-in: scale-in 0.5s ease-out;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-shimmer: shimmer 2s linear infinite;
 }
 
 @keyframes fade-in {
@@ -65,6 +69,31 @@
 @keyframes slide-up {
   from { transform: translateY(20px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes scale-in {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes fade-in-video {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.animate-fade-in-video {
+  animation: fade-in-video 2s ease-out forwards;
+  animation-delay: 2s;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -173,4 +202,62 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 50;
   opacity: 0.03;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Blog Prose Styles */
+.prose {
+  color: var(--navy);
+  max-width: 65ch;
+}
+
+.prose p {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--navy);
+}
+
+.prose h2 {
+  margin-top: 2.5em;
+  margin-bottom: 1em;
+  font-size: 1.75rem;
+  font-weight: 700;
+  font-family: var(--font-serif);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--navy);
+}
+
+.prose h3 {
+  margin-top: 2em;
+  margin-bottom: 0.75em;
+  font-size: 1.375rem;
+  font-weight: 600;
+  font-family: var(--font-serif);
+  color: var(--navy);
+}
+
+.prose a {
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.prose a:hover {
+  color: var(--emerald);
+}
+
+.prose strong {
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.prose blockquote {
+  border-left: 3px solid var(--gold);
+  padding-left: 1.5em;
+  margin: 2em 0;
+  font-style: italic;
+  color: var(--navy);
+  opacity: 0.8;
 }

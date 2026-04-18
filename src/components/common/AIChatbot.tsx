@@ -2,7 +2,20 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageSquare, X, Send, Sparkles, User, Bot, Loader2, ArrowUpRight, ArrowRight } from 'lucide-react';
+import { MessageSquare, X, Send, Sparkles, User, Bot, Loader2, ArrowUpRight, ArrowRight, Trash2 } from 'lucide-react';
+import Link from 'next/link';
+
+const quickSuggestions = [
+  "Tell me about your luxury villas",
+  "What sustainable features do you offer?",
+  "How do I start a project?",
+  "What is your typical timeline?"
+];
+
+const suggestedActions = [
+  { label: "View Our Projects", href: "/projects", icon: ArrowUpRight },
+  { label: "Get a Quote", href: "/quote", icon: ArrowRight },
+];
 
 export default function AIChatbot() {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,6 +59,16 @@ export default function AIChatbot() {
     }
   };
 
+  const handleClearChat = () => {
+    setMessages([
+      { role: 'assistant', content: "Greetings. I am Buildangle's AI Design Strategist. How may I assist with your architectural vision today?" }
+    ]);
+  };
+
+  const handleSuggestionClick = (suggestion: string) => {
+    setInput(suggestion);
+  };
+
   return (
     <div className="fixed bottom-10 right-10 z-[100] flex flex-col items-end">
       {/* Chat Window */}
@@ -68,12 +91,21 @@ export default function AIChatbot() {
                     <p className="text-[10px] text-cream/30 uppercase tracking-widest font-black italic">Powered by Llama 3.3 Mastery</p>
                  </div>
               </div>
-              <button 
-                onClick={() => setIsOpen(false)}
-                className="text-cream/30 hover:text-gold transition-colors"
-              >
-                <X size={20} />
-              </button>
+              <div className="flex items-center space-x-3">
+                <button 
+                  onClick={handleClearChat}
+                  className="text-cream/30 hover:text-gold transition-colors"
+                  title="Clear chat"
+                >
+                  <Trash2 size={18} />
+                </button>
+                <button 
+                  onClick={() => setIsOpen(false)}
+                  className="text-cream/30 hover:text-gold transition-colors"
+                >
+                  <X size={20} />
+                </button>
+              </div>
             </div>
 
             {/* Messages */}
@@ -81,6 +113,22 @@ export default function AIChatbot() {
               ref={scrollRef}
               className="flex-grow overflow-y-auto p-6 space-y-6 scrollbar-thin scrollbar-thumb-gold/20"
             >
+              {messages.length === 1 && messages[0].role === 'assistant' && (
+                <div className="mb-4">
+                  <p className="text-[10px] uppercase font-bold text-gold/40 tracking-widest mb-4">Quick Questions</p>
+                  <div className="flex flex-wrap gap-2">
+                    {quickSuggestions.map((suggestion, i) => (
+                      <button
+                        key={i}
+                        onClick={() => handleSuggestionClick(suggestion)}
+                        className="px-3 py-2 text-[10px] text-cream/60 bg-white/5 border border-white/10 rounded-full hover:border-gold/30 hover:text-gold transition-colors"
+                      >
+                        {suggestion}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
               {messages.map((m, i) => (
                 <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                   <div className={`max-w-[85%] p-4 rounded-sm text-sm font-light leading-relaxed italic ${
@@ -125,6 +173,23 @@ export default function AIChatbot() {
                     <Send size={18} />
                   </button>
                </div>
+               
+               {/* Suggested Actions */}
+               {messages.length > 2 && (
+                 <div className="mt-4 pt-4 border-t border-gold/10 flex flex-wrap gap-3">
+                   {suggestedActions.map((action, i) => (
+                     <Link
+                       key={i}
+                       href={action.href}
+                       className="flex items-center text-[10px] uppercase tracking-widest font-bold text-cream/50 hover:text-gold transition-colors bg-white/5 px-4 py-2 rounded-full border border-white/5 hover:border-gold/30"
+                     >
+                       {action.label}
+                       <action.icon size={12} className="ml-2" />
+                     </Link>
+                   ))}
+                 </div>
+               )}
+               
                <div className="mt-4 flex items-center justify-between text-[8px] uppercase tracking-widest text-cream/20 font-black italic">
                   <span>Buildangle Encryption Active</span>
                   <Link href="/quote" className="text-gold/40 hover:text-gold flex items-center">
@@ -161,7 +226,3 @@ export default function AIChatbot() {
     </div>
   );
 }
-
-// Internal Link component since we are in components
-import NextLink from 'next/link';
-const Link = NextLink;

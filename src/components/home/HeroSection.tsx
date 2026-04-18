@@ -4,23 +4,38 @@ import { motion } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
 import Link from 'next/link';
 import HeroOrbsScene from '@/components/three/HeroOrbsScene';
+import Image from 'next/image';
 
 export default function HeroSection() {
   return (
     <section className="relative h-[90vh] flex items-center justify-center overflow-hidden -mt-24 md:-mt-32">
       {/* Background Media */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-navy/60 z-10" /> {/* Background Overlay */}
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full h-full object-cover grayscale-[0.2]"
-        >
-          {/* Replace with actual high-quality drone footage later */}
-          <source src="https://assets.mixkit.co/videos/preview/mixkit-modern-luxury-house-exterior-at-dusk-12563-large.mp4" type="video/mp4" />
-        </video>
+        {/* Initial Image Background */}
+        <div className="absolute inset-0 z-0 transition-opacity duration-[2000ms]">
+          <Image
+            src="/01.jpg"
+            alt="Buildangle Luxury Villa"
+            fill
+            priority
+            className="object-cover grayscale-[0.3]"
+          />
+        </div>
+        
+        {/* Video Background with fade */}
+        <div className="absolute inset-0 z-5 opacity-0 animate-fade-in-video">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover grayscale-[0.3]"
+          >
+            <source src="/02.mp4" type="video/mp4" />
+          </video>
+        </div>
+        
+        <div className="absolute inset-0 bg-navy/50 z-10" />
         <div className="absolute inset-0 z-20 opacity-60">
           <HeroOrbsScene />
         </div>

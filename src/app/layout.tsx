@@ -17,20 +17,21 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: 'Elite Homes Lanka | Architects of Timeless Luxury',
+  metadataBase: new URL('https://buildangle.com'),
+  title: 'Buildangle | Architects of Timeless Luxury',
   description: 'The gold standard in tropical luxury construction. Build your legacy with Sri Lanka\'s premier design-build empire. Founded by Mr. Harsha Kodippili.',
-  keywords: ['Luxury Homes Sri Lanka', 'Elite Construction Colombo', 'Sustainable Architecture', 'Modern Villa Design', 'Elite Homes Lanka'],
+  keywords: ['Luxury Homes Sri Lanka', 'Elite Construction Colombo', 'Sustainable Architecture', 'Modern Villa Design', 'Buildangle', 'Construction Sri Lanka'],
   openGraph: {
-    title: 'Elite Homes Lanka | Architects of Timeless Luxury',
+    title: 'Buildangle | Architects of Timeless Luxury',
     description: 'Transforming visions into architectural masterpieces since 2008.',
-    url: 'https://elitehomes.lk',
-    siteName: 'Elite Homes Lanka',
+    url: 'https://buildangle.com',
+    siteName: 'Buildangle',
     images: [
       {
-        url: '/images/og-image.jpg',
+        url: 'https://buildangle.com/images/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Elite Homes Lanka Luxury Villa',
+        alt: 'Buildangle Luxury Villa',
       },
     ],
     locale: 'en_US',
@@ -38,9 +39,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Elite Homes Lanka | Architects of Timeless Luxury',
+    title: 'Buildangle | Architects of Timeless Luxury',
     description: 'The gold standard in tropical luxury construction.',
-    images: ['/images/twitter-card.jpg'],
+    images: ['https://buildangle.com/images/twitter-card.jpg'],
   },
 };
 
