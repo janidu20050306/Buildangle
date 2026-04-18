@@ -3,7 +3,6 @@ import './globals.css';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import CustomCursor from '@/components/common/CustomCursor';
-import AIChatbot from '@/components/common/AIChatbot';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://buildangle.com'),
@@ -47,7 +46,6 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
-        <AIChatbot />
       </body>
     </html>
   );

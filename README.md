@@ -136,7 +136,7 @@ This project is licensed for Buildangle Construction Ltd.
 
 ## 👨‍💻 Developer
 
-**Janidu Dissanayake**  
+**Janidu Induwara**  
 GitHub: [@janidu20050306](https://github.com/janidu20050306)
 
 ---
