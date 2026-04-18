@@ -59,8 +59,9 @@ npm run dev
 - [x] **Custom Cursor**: Premium interactive point-of-presence.
 
 ## 📞 Support
-Crafted for **Elite Homes Lanka** by Antigravity (Advanced Agentic Coding).
+Crafted for **BUILDANGLE** by JANIDU INDUWARA
 Built for longevity, performance, and institutional prestige.
 
 ---
 **Version**: 1.0 Enterprise Edition (April 2026)
+# BUILDANGLE-
