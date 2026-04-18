@@ -2,7 +2,7 @@
 
 import { useMemo, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import { Upload, X, Image as ImageIcon, Loader2, Save, Trash2 } from 'lucide-react';
+import { Upload, X, Image as ImageIcon, Loader2, Save, Trash2, Info } from 'lucide-react';
 import type { Project } from '@/lib/constants';
 
 const categories: Project['category'][] = ['Luxury Villa', 'Modern Home', 'Renovation', 'Commercial'];
@@ -275,22 +275,36 @@ export default function ProjectEditor({ mode, project }: ProjectEditorProps) {
           </div>
         </div>
 
-        {/* Images Section */}
+{/* Images Section */}
         <div className="space-y-6">
           <h3 className="text-lg font-heading font-semibold text-navy flex items-center gap-2">
             <span className="w-1 h-6 bg-orange rounded-full"></span>
             Project Images
           </h3>
 
+          {/* Supported Formats Info */}
+          <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
+            <div className="flex items-start gap-3">
+              <Info size={18} className="text-blue-600 mt-0.5 shrink-0" />
+              <div className="text-sm text-blue-800">
+                <p className="font-semibold mb-1">Supported Image Formats:</p>
+                <p className="text-blue-700">JPG, JPEG, PNG, WebP, GIF</p>
+                <p className="text-blue-600 mt-1">Maximum file size: 10MB per image</p>
+                <p className="text-blue-600">Recommended resolution: 1920x1080 or higher</p>
+              </div>
+            </div>
+          </div>
+
           {/* Cover Image */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Cover Image URL</label>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Cover Image URL (Main Image) *</label>
             <div className="flex gap-4">
               <input
                 value={form.image}
                 onChange={(e) => setForm((prev) => ({ ...prev, image: e.target.value }))}
                 className="flex-1 border border-gray-300 px-4 py-3 rounded-xl focus:ring-2 focus:ring-orange focus:border-orange transition-colors"
-                placeholder="https://example.com/image.jpg"
+                placeholder="https://example.com/cover-image.jpg"
+                required
               />
               {form.image && (
                 <div className="w-16 h-16 rounded-xl overflow-hidden border border-gray-200 shrink-0">
