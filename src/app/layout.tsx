@@ -1,9 +1,20 @@
 import type { Metadata } from 'next';
+import { Inter, Playfair_Display } from 'next/font/google';
 import './globals.css';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import CustomCursor from '@/components/common/CustomCursor';
 import AIChatbot from '@/components/common/AIChatbot';
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+});
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-playfair',
+});
 
 export const metadata: Metadata = {
   title: 'Elite Homes Lanka | Architects of Timeless Luxury',

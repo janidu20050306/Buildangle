@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
 import Link from 'next/link';
+import HeroOrbsScene from '@/components/three/HeroOrbsScene';
 
 export default function HeroSection() {
   return (
@@ -20,9 +21,12 @@ export default function HeroSection() {
           {/* Replace with actual high-quality drone footage later */}
           <source src="https://assets.mixkit.co/videos/preview/mixkit-modern-luxury-house-exterior-at-dusk-12563-large.mp4" type="video/mp4" />
         </video>
+        <div className="absolute inset-0 z-20 opacity-60">
+          <HeroOrbsScene />
+        </div>
       </div>
 
-      <div className="relative z-20 text-center px-6 max-w-5xl mx-auto">
+      <div className="relative z-30 text-center px-6 max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}

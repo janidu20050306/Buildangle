@@ -6,15 +6,18 @@ import FeaturedProjects from '@/components/home/FeaturedProjects';
 import TestimonialsCarousel from '@/components/home/TestimonialsCarousel';
 import CTASection from '@/components/home/CTASection';
 import NewsletterSignup from '@/components/NewsletterSignup';
+import { getFeaturedProjects } from '@/lib/projects';
 
-export default function Home() {
+export default async function Home() {
+  const featuredProjects = await getFeaturedProjects();
+
   return (
     <>
       <HeroSection />
       <AboutOwner />
       <ValuesSection />
       <ServicesPreview />
-      <FeaturedProjects />
+      <FeaturedProjects projects={featuredProjects} />
       <TestimonialsCarousel />
       <CTASection />
       <NewsletterSignup />

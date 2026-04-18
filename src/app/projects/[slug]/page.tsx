@@ -1,29 +1,31 @@
-'use client';
-
-import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { 
-  ArrowLeft, MapPin, Calendar, Layers, Maximize, 
+  ArrowLeft, MapPin, Calendar, Layers,
   Leaf, Info, Compass, ChevronRight, Star, 
   MessageCircle, ArrowRight, Share2, Printer
 } from 'lucide-react';
-import { PROJECTS, Project } from '@/lib/constants';
+import { getProjectBySlug } from '@/lib/projects';
 import Container from '@/components/common/Container';
+import ProjectShowcaseScene from '@/components/three/ProjectShowcaseScene';
 
 interface ProjectPageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
-export default function ProjectDetailPage({ params }: ProjectPageProps) {
-  const project = PROJECTS.find((p) => p.slug === params.slug);
+export default async function ProjectDetailPage({ params }: ProjectPageProps) {
+  const { slug } = await params;
+  const project = await getProjectBySlug(slug);
 
   if (!project) {
     notFound();
   }
 
   const isRenovation = project.category === 'Renovation';
+  const status = project.status ?? 'ongoing';
+  const statusClass =
+    status === 'done' ? 'bg-emerald text-white' : status === 'coming-soon' ? 'bg-clay text-white' : 'bg-gold text-navy';
 
   return (
     <div className="bg-cream min-h-screen text-navy pt-24">
@@ -48,17 +50,18 @@ export default function ProjectDetailPage({ params }: ProjectPageProps) {
         
         <div className="absolute inset-0 flex items-center justify-center text-center px-6">
           <Container>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1 }}
-            >
+            <div>
               <span className="text-gold text-xs uppercase tracking-[0.5em] mb-6 block font-bold">
                 Elite Flagship Project
               </span>
               <h1 className="text-5xl md:text-8xl font-serif text-cream mb-8 leading-tight tracking-tight uppercase">
                 {project.title}
               </h1>
+              <div className="mb-6">
+                <span className={`inline-flex px-4 py-2 text-[10px] uppercase tracking-widest font-bold rounded-full ${statusClass}`}>
+                  {status.replace('-', ' ')}
+                </span>
+              </div>
               <div className="flex flex-wrap items-center justify-center gap-6 text-cream/70 text-sm uppercase tracking-widest font-bold">
                  <div className="flex items-center">
                     <MapPin size={18} className="mr-2 text-gold" />
@@ -69,7 +72,7 @@ export default function ProjectDetailPage({ params }: ProjectPageProps) {
                     {project.year}
                  </div>
               </div>
-            </motion.div>
+            </div>
           </Container>
         </div>
 
@@ -115,11 +118,7 @@ export default function ProjectDetailPage({ params }: ProjectPageProps) {
       <section className="section-padding overflow-hidden">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
-             <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-             >
+             <div>
                 <div className="mb-12">
                    <span className="text-gold text-xs uppercase tracking-[0.4em] mb-4 block font-bold">
                       The Concept
@@ -154,14 +153,9 @@ export default function ProjectDetailPage({ params }: ProjectPageProps) {
                       </div>
                    ))}
                 </div>
-             </motion.div>
+             </div>
 
-             <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="relative aspect-[3/4] w-full bg-navy/5"
-             >
+             <div className="relative aspect-[3/4] w-full bg-navy/5">
                 <div className="absolute -inset-4 border border-gold/20 -z-10 translate-x-8 translate-y-8" />
                 <Image
                    src={project.image}
@@ -169,7 +163,7 @@ export default function ProjectDetailPage({ params }: ProjectPageProps) {
                    fill
                    className="object-cover"
                 />
-             </motion.div>
+             </div>
           </div>
         </Container>
       </section>
@@ -190,27 +184,8 @@ export default function ProjectDetailPage({ params }: ProjectPageProps) {
             </div>
 
             <div className="relative aspect-video w-full max-w-6xl mx-auto bg-charcoal/30 border border-gold/10 rounded-sm overflow-hidden group">
-               {/* Spline Placeholder */}
-               <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                     <div className="relative mb-8">
-                        <Compass size={120} className="text-gold/20 animate-spin-slow mx-auto" />
-                        <div className="absolute inset-0 flex items-center justify-center">
-                           <Maximize size={48} className="text-gold/40" />
-                        </div>
-                     </div>
-                     <p className="text-[10px] uppercase font-bold tracking-[0.4em] text-gold/40 mb-6 italic">Initialising Spline VR Engine...</p>
-                     
-                     <Link
-                        href="#"
-                        className="bg-gold hover:bg-gold/90 text-navy px-12 py-5 rounded-sm text-sm uppercase tracking-widest font-bold transition-all shadow-2xl"
-                     >
-                        Launch Interactive Model
-                     </Link>
-                  </div>
-               </div>
-               
-               {/* Model Controls Hover */}
+               <ProjectShowcaseScene />
+
                <div className="absolute bottom-8 left-8 right-8 flex justify-between items-end z-20 opacity-0 group-hover:opacity-100 transition-opacity">
                   <div className="flex items-center space-x-6">
                      <div className="flex items-center text-[10px] text-gold/60 uppercase font-black space-x-2">
@@ -315,9 +290,13 @@ export default function ProjectDetailPage({ params }: ProjectPageProps) {
                <div className="flex flex-col sm:flex-row items-center justify-center gap-10">
                   <Link
                     href="/quote"
-                    className="w-full sm:w-auto bg-gold hover:bg-gold/90 text-navy px-12 py-5 rounded-sm text-sm uppercase tracking-widest font-bold transition-all shadow-2xl active:scale-95"
+                    className={`w-full sm:w-auto px-12 py-5 rounded-sm text-sm uppercase tracking-widest font-bold transition-all shadow-2xl active:scale-95 ${
+                      status === 'coming-soon'
+                        ? 'bg-navy/20 text-navy/40 cursor-not-allowed pointer-events-none'
+                        : 'bg-gold hover:bg-gold/90 text-navy'
+                    }`}
                   >
-                    Request Similar Build
+                    {status === 'coming-soon' ? 'Coming Soon' : 'Request Similar Build'}
                   </Link>
                   <Link
                     href="/contact"

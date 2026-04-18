@@ -11,6 +11,14 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
+  const status = project.status ?? 'ongoing';
+  const statusClass =
+    status === 'done'
+      ? 'bg-emerald/90 text-white'
+      : status === 'coming-soon'
+      ? 'bg-clay text-white'
+      : 'bg-navy/80 text-gold border border-gold/30';
+
   return (
     <motion.div
       layout
@@ -39,6 +47,9 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               Featured
             </span>
           )}
+          <span className={`text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full ${statusClass}`}>
+            {status.replace('-', ' ')}
+          </span>
         </div>
 
         {/* Explore 3D */}

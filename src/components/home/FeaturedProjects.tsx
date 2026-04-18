@@ -6,47 +6,20 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight, MapPin, Calendar, Compass } from 'lucide-react';
 import Container from '../common/Container';
+import type { Project } from '@/lib/constants';
 
-const projects = [
-  {
-    slug: 'modern-luxury-villa-colombo-7',
-    title: 'Aura Villa - Gregory\'s Road',
-    category: 'Luxury Villa',
-    location: 'Colombo 07',
-    year: 2024,
-    image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&q=90',
-    description: 'A contemporary 6-bedroom masterpiece blending traditional courtyard architecture with minimalist design.'
-  },
-  {
-    slug: 'sustainable-retreat-galle',
-    title: 'The Eco-Sanctuary',
-    category: 'Sustainable Build',
-    location: 'Galle Fort',
-    year: 2023,
-    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1200&q=90',
-    description: 'Heritage-focused net-zero renovation that preserves the 18th-century soul while providing 21st-century comfort.'
-  },
-  {
-    slug: 'corporate-hq-kandy',
-    title: 'Apex Business Center',
-    category: 'Commercial',
-    location: 'Kandy Central',
-    year: 2025,
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=90',
-    description: 'A landmark institutional complex that sets new standards for vertical offices in the Hill Country.'
-  }
-];
-
-export default function FeaturedProjects() {
+export default function FeaturedProjects({ projects }: { projects: Project[] }) {
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const safeProjects = projects.length ? projects : [];
 
   const paginate = (newDirection: number) => {
     setDirection(newDirection);
-    setIndex((prevIndex) => (prevIndex + newDirection + projects.length) % projects.length);
+    setIndex((prevIndex) => (prevIndex + newDirection + safeProjects.length) % safeProjects.length);
   };
 
-  const project = projects[index];
+  if (!safeProjects.length) return null;
+  const project = safeProjects[index];
 
   return (
     <section className="section-padding bg-navy text-cream overflow-hidden">
@@ -158,7 +131,7 @@ export default function FeaturedProjects() {
                 <div className="mt-16 flex items-center text-cream/20 space-x-6">
                   <span className="text-3xl font-serif font-black">{`0${index + 1}`}</span>
                   <div className="h-[1px] w-20 bg-gold/20" />
-                  <span className="text-sm font-medium uppercase tracking-[0.4em]">{`OF 0${projects.length}`}</span>
+                  <span className="text-sm font-medium uppercase tracking-[0.4em]">{`OF 0${safeProjects.length}`}</span>
                 </div>
               </div>
             </motion.div>
