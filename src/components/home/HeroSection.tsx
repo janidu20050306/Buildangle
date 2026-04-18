@@ -21,14 +21,14 @@ export default function HeroSection() {
     <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Media */}
       <div className="absolute inset-0 z-0">
-        {/* Initial Image Background */}
+        {/* Initial Image Background - Clear & Bright */}
         <motion.div style={{ y }} className="absolute inset-0 z-0">
           <Image
             src="/01.jpg"
             alt="Buildangle Construction"
             fill
             priority
-            className="object-cover"
+            className="object-cover brightness-100"
           />
         </motion.div>
         
@@ -39,15 +39,15 @@ export default function HeroSection() {
             muted
             loop
             playsInline
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover brightness-100"
           >
             <source src="/02.mp4" type="video/mp4" />
           </video>
         </div>
         
-        {/* Gradient Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-r from-navy/85 via-navy/70 to-navy/50 z-10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/50 to-transparent z-12" />
+        {/* Lighter Overlay - More Transparent */}
+        <div className="absolute inset-0 bg-gradient-to-r from-navy/50 via-navy/30 to-navy/20 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/20 to-transparent z-12" />
         
         {/* 3D Scene Overlay */}
         <motion.div style={{ opacity }} className="absolute inset-0 z-15">
