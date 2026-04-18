@@ -2,80 +2,72 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import CountUp from 'react-countup';
+import Link from 'next/link';
 import Container from '../common/Container';
-
-const stats = [
-  { label: 'Years of Excellence', value: 17, suffix: '+' },
-  { label: 'Completed Projects', value: 150, suffix: '+' },
-  { label: 'Portfolio Value', value: 150, prefix: '$', suffix: 'M+' },
-  { label: 'Team Members', value: 45, suffix: '+' },
-  { label: 'International Awards', value: 5, suffix: '' },
-];
+import { ArrowRight } from 'lucide-react';
 
 export default function AboutOwner() {
   return (
-    <section className="section-padding bg-cream text-navy">
+    <section className="py-20 bg-white">
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          {/* Left: Founder Portrait */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Image */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 0.6 }}
             className="relative"
           >
-            <div className="relative aspect-square w-full max-w-md mx-auto group">
-              <div className="absolute inset-0 border-[12px] border-gold transform translate-x-6 translate-y-6 -z-10 transition-transform group-hover:translate-x-4 group-hover:translate-y-4 duration-500" />
-              <div className="absolute inset-0 bg-navy/10 group-hover:bg-transparent transition-colors duration-500 z-10" />
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg">
               <Image
-                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&h=800&fit=crop"
-                alt="Mr. Harsha Kodippili - Founder & CEO"
+                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&q=80"
+                alt="Mr. Harsha Kodippili - Founder"
                 fill
                 className="object-cover"
               />
+              <div className="absolute inset-0 bg-navy/20" />
+            </div>
+            {/* Experience Badge */}
+            <div className="absolute -bottom-6 -right-6 bg-orange text-white p-6 rounded-lg shadow-xl">
+              <div className="text-4xl font-heading font-bold">15+</div>
+              <div className="text-sm">Years Experience</div>
             </div>
           </motion.div>
 
-          {/* Right: Narrative + Stats */}
+          {/* Content */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <span className="text-gold text-xs uppercase tracking-[0.4em] mb-4 block font-bold">
-              About the Visionary
+            <span className="text-orange text-sm font-semibold uppercase tracking-wider mb-4 block">
+              About Us
             </span>
-            <h2 className="text-4xl md:text-5xl font-serif mb-8 leading-tight">
-              Leading with Architectural <br />
-              <span className="italic">Excellence Since 2008</span>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-navy mb-6">
+              Building Dreams Since 2008
             </h2>
-            <div className="space-y-6 text-navy/70 leading-relaxed font-light text-lg mb-12">
-              <p>
-                Founded by <span className="text-navy font-bold">Mr. Harsha Kodippili</span>, Elite Homes Lanka has redefined the landscape of tropical luxury architecture. Our firm was born from a vision to blend timeless design with sustainable practices, creating spaces that breathe and inspire.
-              </p>
-              <p>
-                With over 17 years of experience, we have transformed the dreams of high-net-worth individuals and institutional clients into iconic landmarks across Sri Lanka, Maldives, and Singapore.
-              </p>
-            </div>
+            <p className="text-gray-600 mb-6 leading-relaxed">
+              Buildangle is a premier construction and architecture company in Sri Lanka, specializing in luxury villas, modern homes, and sustainable buildings. Our founder, Mr. Harsha Kodippili, established the company with a vision to deliver excellence in every project.
+            </p>
+            <p className="text-gray-600 mb-8 leading-relaxed">
+              With over 15 years of experience and 500+ successful projects, we have become a trusted name in the construction industry. Our team of expert architects, engineers, and builders work together to transform your vision into reality.
+            </p>
 
-            {/* Stats Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-8 pt-12 border-t border-navy/10">
-              {stats.map((stat, i) => (
-                <div key={i} className="flex flex-col">
-                  <span className="text-3xl md:text-4xl font-serif font-bold text-gold">
-                    {stat.prefix}
-                    <CountUp end={stat.value} duration={3} enableScrollSpy scrollSpyOnce />
-                    {stat.suffix}
-                  </span>
-                  <span className="text-[10px] uppercase tracking-widest text-navy/60 font-bold mt-2">
-                    {stat.label}
-                  </span>
+            {/* Features */}
+            <div className="grid grid-cols-2 gap-4 mb-8">
+              {['Premium Quality', 'On-Time Delivery', 'Expert Team', 'Customer Satisfaction'].map((item) => (
+                <div key={item} className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-orange rounded-full" />
+                  <span className="text-gray-700 font-medium">{item}</span>
                 </div>
               ))}
             </div>
+
+            <Link href="/about" className="inline-flex items-center text-orange font-semibold hover:underline">
+              Learn More About Us <ArrowRight size={18} className="ml-2" />
+            </Link>
           </motion.div>
         </div>
       </Container>

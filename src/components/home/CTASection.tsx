@@ -6,57 +6,68 @@ import Container from '../common/Container';
 
 export default function CTASection() {
   return (
-    <section className="relative py-32 overflow-hidden">
-      {/* Dynamic Background */}
-      <div className="absolute inset-0 bg-navy z-0">
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-          className="absolute inset-x-0 top-0 h-full bg-gradient-to-br from-gold/20 via-transparent to-emerald/20 blur-3xl rounded-full"
-        />
+    <section className="relative py-24 bg-navy overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0" style={{
+          backgroundImage: 'radial-gradient(circle at 25% 25%, #f97316 1px, transparent 1px), radial-gradient(circle at 75% 75%, #f97316 1px, transparent 1px)',
+          backgroundSize: '50px 50px'
+        }} />
       </div>
 
-      <Container className="relative z-10 text-center">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="max-w-4xl mx-auto"
-        >
-          <span className="text-gold text-xs uppercase tracking-[0.5em] mb-6 block font-bold">
-            Let's Build Your Dream
-          </span>
-          <h2 className="text-5xl md:text-7xl font-serif text-cream mb-10 leading-tight">
-            Ready to Reimagine <br />
-            <span className="italic italic-gold italic-emerald transition-colors duration-500">Your Space?</span>
-          </h2>
-          <p className="text-cream/60 text-lg md:text-xl font-light mb-16 max-w-2xl mx-auto leading-relaxed italic">
-            "Your vision is the compass; our mastery is the map. Together, we create a sanctuary that reflects your soul."
-          </p>
+      <Container className="relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="text-orange text-sm font-semibold uppercase tracking-wider mb-4 block">
+              Get A Free Quote
+            </span>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-6">
+              Let's Build Your Dream Project Together
+            </h2>
+            <p className="text-gray-400 mb-8 leading-relaxed">
+              Contact us today for a free consultation. Our expert team will help you transform your vision into reality.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link
+                href="/quote"
+                className="bg-orange hover:bg-orange-dark text-white px-8 py-4 text-sm font-semibold transition-all hover:shadow-lg hover:shadow-orange/30"
+              >
+                Get Free Quote
+              </Link>
+              <Link
+                href="/contact"
+                className="border border-white/20 text-white hover:bg-white hover:text-navy px-8 py-4 text-sm font-semibold transition-all"
+              >
+                Contact Us
+              </Link>
+            </div>
+          </motion.div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
-            <Link
-              href="/quote"
-              className="w-full sm:w-auto bg-gold hover:bg-gold/90 text-navy px-12 py-5 rounded-sm text-sm uppercase tracking-widest font-bold transition-all transform hover:scale-105 shadow-2xl shadow-gold/10"
-            >
-              Get Detailed Quote
-            </Link>
-            <Link
-              href="/projects"
-              className="w-full sm:w-auto border border-cream/30 hover:border-gold hover:text-gold transition-all px-12 py-5 rounded-sm text-sm uppercase tracking-widest font-bold text-cream"
-            >
-              View Project Portfolio
-            </Link>
-          </div>
-        </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="grid grid-cols-2 gap-6"
+          >
+            {[
+              { number: '15+', label: 'Years Experience' },
+              { number: '500+', label: 'Projects Done' },
+              { number: '100%', label: 'Client Satisfaction' },
+              { number: '24/7', label: 'Support' },
+            ].map((item, i) => (
+              <div key={i} className="bg-white/5 p-6 rounded-lg text-center border border-white/10">
+                <div className="text-3xl font-heading font-bold text-orange mb-2">{item.number}</div>
+                <div className="text-gray-400 text-sm">{item.label}</div>
+              </div>
+            ))}
+          </motion.div>
+        </div>
       </Container>
     </section>
   );

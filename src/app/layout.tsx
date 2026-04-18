@@ -1,29 +1,18 @@
 import type { Metadata } from 'next';
-import { Inter, Playfair_Display } from 'next/font/google';
 import './globals.css';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import CustomCursor from '@/components/common/CustomCursor';
 import AIChatbot from '@/components/common/AIChatbot';
 
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-});
-
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  variable: '--font-playfair',
-});
-
 export const metadata: Metadata = {
   metadataBase: new URL('https://buildangle.com'),
-  title: 'Buildangle | Architects of Timeless Luxury',
-  description: 'The gold standard in tropical luxury construction. Build your legacy with Sri Lanka\'s premier design-build empire. Founded by Mr. Harsha Kodippili.',
-  keywords: ['Luxury Homes Sri Lanka', 'Elite Construction Colombo', 'Sustainable Architecture', 'Modern Villa Design', 'Buildangle', 'Construction Sri Lanka'],
+  title: 'Buildangle | Construction & Architecture Sri Lanka',
+  description: 'Premium construction and architecture services in Sri Lanka. Building excellence since 2008. Luxury villas, modern homes, and sustainable buildings.',
+  keywords: ['Construction Sri Lanka', 'Architecture Sri Lanka', 'Luxury Homes', 'Building Company', 'Villa Construction', 'Sustainable Architecture'],
   openGraph: {
-    title: 'Buildangle | Architects of Timeless Luxury',
-    description: 'Transforming visions into architectural masterpieces since 2008.',
+    title: 'Buildangle | Construction & Architecture Sri Lanka',
+    description: 'Premium construction and architecture services in Sri Lanka.',
     url: 'https://buildangle.com',
     siteName: 'Buildangle',
     images: [
@@ -31,7 +20,7 @@ export const metadata: Metadata = {
         url: 'https://buildangle.com/images/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Buildangle Luxury Villa',
+        alt: 'Buildangle Construction',
       },
     ],
     locale: 'en_US',
@@ -39,9 +28,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Buildangle | Architects of Timeless Luxury',
-    description: 'The gold standard in tropical luxury construction.',
-    images: ['https://buildangle.com/images/twitter-card.jpg'],
+    title: 'Buildangle | Construction & Architecture Sri Lanka',
+    description: 'Premium construction and architecture services in Sri Lanka.',
   },
 };
 
@@ -51,12 +39,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark scroll-smooth">
-      <body className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-navy text-cream min-h-screen mesh-bg selection:bg-gold/30 selection:text-gold`}>
-        <div className="noise-overlay pointer-events-none" />
+    <html lang="en" className="scroll-smooth">
+      <body className="font-body bg-cream text-navy antialiased">
         <CustomCursor />
         <Navigation />
-        <main className="min-h-screen relative z-10 flex flex-col">
+        <main className="min-h-screen relative z-10">
           {children}
         </main>
         <Footer />

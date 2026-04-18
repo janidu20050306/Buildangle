@@ -1,111 +1,104 @@
 import Link from 'next/link';
-import { Camera, Briefcase, PlaySquare, MessageCircle, MapPin, Phone, Mail, ArrowUpRight } from 'lucide-react';
-import Container from './common/Container';
+import { MapPin, Phone, Mail, Globe } from 'lucide-react';
+import Container from '@/components/common/Container';
 
-const links = {
-  company: [
-    { name: 'About Buildangle', href: '/about' },
-    { name: 'The Process', href: '/services#process' },
-    { name: 'Meet the Founder', href: '/about#founder' },
-    { name: 'Architecture Awards', href: '/about#awards' },
-  ],
-  services: [
-    { name: 'Luxury Villas', href: '/services#villas' },
-    { name: 'Modern Homes', href: '/services#modern' },
-    { name: 'Sustainability', href: '/services#sustainable' },
-    { name: 'Commercial', href: '/services#commercial' },
-  ],
-  legal: [
-    { name: 'Privacy Policy', href: '/privacy' },
-    { name: 'Terms & Conditions', href: '/terms' },
-    { name: 'Security Compliance', href: '/security' },
-  ],
-};
+const currentYear = new Date().getFullYear();
 
 export default function Footer() {
   return (
-    <footer className="bg-charcoal text-cream/80 pt-24 pb-12 border-t border-gold/10">
+    <footer className="bg-navy text-gray-300 pt-16 pb-8">
       <Container>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
-          {/* Brand Info */}
-          <div className="flex flex-col">
-            <Link href="/" className="mb-8">
-              <span className="text-3xl font-serif font-bold text-gold tracking-tight">BUILDANGLE</span>
-              <span className="text-[10px] tracking-widest block text-cream/50 mt-1 uppercase italic font-medium">SINCE 2008</span>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+          {/* Brand Column */}
+          <div className="lg:col-span-1">
+            <Link href="/" className="flex items-center gap-3 mb-6">
+              <div className="w-12 h-12 bg-orange flex items-center justify-center">
+                <span className="text-white font-heading font-bold text-2xl">B</span>
+              </div>
+              <div>
+                <span className="text-xl font-heading font-bold text-white">BUILDANGLE</span>
+                <span className="text-[10px] block text-gray-500">Construction Ltd</span>
+              </div>
             </Link>
-            <p className="text-cream/60 leading-relaxed mb-8 max-w-xs italic font-serif">
-              "Building more than structures, we craft legacies that harmonize with nature and elevate the standard of living."
+            <p className="text-gray-400 mb-6 leading-relaxed">
+              Building excellence since 2008. We deliver premium construction and architecture services across Sri Lanka.
             </p>
-            <div className="flex space-x-4">
-              {[Camera, Briefcase, PlaySquare, MessageCircle].map((Icon, i) => (
-                <Link key={i} href="#" className="p-2 border border-gold/20 hover:border-gold/60 transition-colors text-gold">
-                  <Icon size={20} />
-                </Link>
-              ))}
+            <div className="flex gap-4">
+              <a href="#" className="w-10 h-10 bg-white/5 flex items-center justify-center hover:bg-orange transition-colors">
+                <Globe size={18} />
+              </a>
+              <a href="#" className="w-10 h-10 bg-white/5 flex items-center justify-center hover:bg-orange transition-colors">
+                <Mail size={18} />
+              </a>
+              <a href="#" className="w-10 h-10 bg-white/5 flex items-center justify-center hover:bg-orange transition-colors">
+                <Phone size={18} />
+              </a>
             </div>
           </div>
 
-          {/* Links 1 */}
+          {/* Quick Links */}
           <div>
-            <h4 className="text-gold font-serif text-lg mb-8 uppercase tracking-widest">The Firm</h4>
-            <ul className="space-y-4">
-              {links.company.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="hover:text-gold transition-colors flex items-center group">
-                    {link.name}
-                    <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity ml-1" />
+            <h4 className="text-white font-heading font-semibold text-lg mb-6">Quick Links</h4>
+            <ul className="space-y-3">
+              {['About Us', 'Services', 'Projects', 'Blog', 'Contact'].map((item) => (
+                <li key={item}>
+                  <Link href={`/${item.toLowerCase().replace(' ', '-')}`} className="hover:text-orange transition-colors">
+                    {item}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Links 2 */}
+          {/* Services */}
           <div>
-            <h4 className="text-gold font-serif text-lg mb-8 uppercase tracking-widest">Expertise</h4>
-            <ul className="space-y-4">
-              {links.services.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="hover:text-gold transition-colors flex items-center group">
-                    {link.name}
-                    <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity ml-1" />
+            <h4 className="text-white font-heading font-semibold text-lg mb-6">Services</h4>
+            <ul className="space-y-3">
+              {['Luxury Villas', 'Modern Homes', 'Commercial Buildings', 'Renovations', 'Sustainable Building'].map((item) => (
+                <li key={item}>
+                  <Link href="/services" className="hover:text-orange transition-colors">
+                    {item}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* Contact Info */}
           <div>
-            <h4 className="text-gold font-serif text-lg mb-8 uppercase tracking-widest">Global HQ</h4>
-            <ul className="space-y-6">
-              <li className="flex items-start">
-                <MapPin className="text-gold mt-1 mr-4 shrink-0" size={20} />
-                <span className="text-cream/70 leading-relaxed">
-                  Elite Plaza, No. 45th Floor, Gregory's Road, Colombo 7, Sri Lanka
+            <h4 className="text-white font-heading font-semibold text-lg mb-6">Contact Us</h4>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-4">
+                <MapPin className="text-orange shrink-0 mt-1" size={20} />
+                <span className="text-gray-400">
+                  No. 45, Gregory's Road,<br />
+                  Colombo 07, Sri Lanka
                 </span>
               </li>
-              <li className="flex items-center">
-                <Phone className="text-gold mr-4 shrink-0" size={20} />
-                <span className="text-cream/70">+94 11 234 5678</span>
+              <li className="flex items-center gap-4">
+                <Phone className="text-orange shrink-0" size={20} />
+                <a href="tel:+94112345678" className="text-gray-400 hover:text-orange transition-colors">
+                  +94 11 234 5678
+                </a>
               </li>
-              <li className="flex items-center">
-                <Mail className="text-gold mr-4 shrink-0" size={20} />
-                <span className="text-cream/70">inquire@buildangle.lk</span>
+              <li className="flex items-center gap-4">
+                <Mail className="text-orange shrink-0" size={20} />
+                <a href="mailto:info@buildangle.com" className="text-gray-400 hover:text-orange transition-colors">
+                  info@buildangle.com
+                </a>
               </li>
             </ul>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gold/10 pt-12 flex flex-col md:flex-row justify-between items-center text-xs tracking-widest text-cream/40 uppercase">
-          <p className="mb-4 md:mb-0">© 2026 Buildangle. All Rights Reserved.</p>
-          <div className="flex space-x-8">
-            {links.legal.map((link) => (
-              <Link key={link.name} href={link.href} className="hover:text-cream transition-colors">
-                {link.name}
-              </Link>
-            ))}
+        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-gray-500 text-sm">
+            © {currentYear} Buildangle Construction Ltd. All Rights Reserved.
+          </p>
+          <div className="flex gap-6 text-sm">
+            <Link href="/privacy" className="text-gray-500 hover:text-orange transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="text-gray-500 hover:text-orange transition-colors">Terms of Service</Link>
           </div>
         </div>
       </Container>
