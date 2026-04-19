@@ -1,10 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Phone } from 'lucide-react';
+import { Menu, X, Phone, ArrowRight } from 'lucide-react';
 import Container from '@/components/common/Container';
 
 const navLinks = [
@@ -18,23 +18,35 @@ const navLinks = [
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b-2 border-orange/30 shadow-lg shadow-orange/5">
+    <nav 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled 
+          ? 'bg-white/95 backdrop-blur-md shadow-lg shadow-gray-100/50 py-3' 
+          : 'bg-white py-4'
+      }`}
+    >
       <Container>
-        <div className="flex items-center justify-between py-3">
+        <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-14 h-14 bg-gradient-to-br from-orange to-orange-dark flex items-center justify-center rounded-xl shadow-lg shadow-orange/30 group-hover:scale-105 transition-transform">
-              <span className="text-white font-heading font-bold text-2xl">B</span>
+            <div className="w-10 h-10 bg-gradient-to-br from-orange to-orange-dark flex items-center justify-center rounded-lg shadow-lg shadow-orange/30 group-hover:scale-105 transition-transform">
+              <span className="text-white font-heading font-bold text-xl">B</span>
             </div>
-            <div className="flex flex-col">
-              <span className="text-xl font-heading font-bold tracking-wide text-navy group-hover:text-orange transition-colors">
+            <div className="hidden sm:block">
+              <span className="text-lg font-heading font-bold text-navy">
                 BUILDANGLE
-              </span>
-              <span className="text-[10px] tracking-[0.2em] uppercase text-gray-500 font-semibold">
-                Construction Ltd
               </span>
             </div>
           </Link>
@@ -45,10 +57,10 @@ export default function Navigation() {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`px-4 py-2 rounded-lg text-base font-semibold transition-all hover:bg-orange/10 ${
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                   pathname === link.href 
                     ? 'text-orange bg-orange/10' 
-                    : 'text-navy hover:text-orange'
+                    : 'text-gray-600 hover:text-navy hover:bg-gray-100'
                 }`}
               >
                 {link.name}
@@ -56,23 +68,29 @@ export default function Navigation() {
             ))}
           </div>
 
-          {/* Phone & CTA */}
+          {/* CTA Button */}
           <div className="hidden lg:flex items-center gap-4">
             <a 
               href="tel:+94112345678" 
-              className="flex items-center gap-2 text-base font-bold text-navy hover:text-orange transition-colors bg-gray-50 px-4 py-2 rounded-lg border border-gray-200 hover:border-orange"
+              className="text-sm font-medium text-gray-600 hover:text-navy transition-colors"
             >
-              <Phone size={20} className="text-orange" />
-              <span>+94 11 234 5678</span>
+              +94 11 234 5678
             </a>
+            <Link 
+              href="/quote"
+              className="flex items-center gap-2 bg-navy hover:bg-navy/90 text-white px-5 py-2.5 rounded-lg text-sm font-medium transition-all hover:shadow-lg hover:shadow-navy/20"
+            >
+              Get Quote
+              <ArrowRight size={16} />
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-3 bg-orange/10 hover:bg-orange/20 rounded-lg"
+            className="lg:hidden p-2 hover:bg-gray-100 rounded-lg"
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <X size={28} className="text-navy" /> : <Menu size={28} className="text-navy" />}
+            {isOpen ? <X size={24} className="text-navy" /> : <Menu size={24} className="text-navy" />}
           </button>
         </div>
       </Container>
@@ -81,35 +99,34 @@ export default function Navigation() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="lg:hidden bg-white border-t-2 border-orange/20 shadow-xl"
+            exit={{ opacity: 0, y: -10 }}
+            className="lg:hidden bg-white border-t border-gray-100 shadow-xl"
           >
             <Container>
-              <div className="flex flex-col py-4 space-y-2">
+              <div className="flex flex-col py-4 space-y-1">
                 {navLinks.map((link) => (
                   <Link
                     key={link.name}
                     href={link.href}
-                    className={`text-lg font-bold px-4 py-3 rounded-lg transition-colors ${
+                    className={`text-base font-medium px-4 py-3 rounded-lg transition-colors ${
                       pathname === link.href 
                         ? 'text-orange bg-orange/10' 
-                        : 'text-navy hover:bg-orange/5 hover:text-orange'
+                        : 'text-gray-600 hover:bg-gray-50'
                     }`}
                     onClick={() => setIsOpen(false)}
                   >
                     {link.name}
                   </Link>
                 ))}
-                {/* Phone in mobile */}
-                <a 
-                  href="tel:+94112345678" 
-                  className="flex items-center gap-2 text-base font-bold text-navy mt-4 px-4 py-3 bg-gray-50 rounded-lg border border-gray-200"
+                <Link 
+                  href="/quote"
+                  className="flex items-center justify-center gap-2 bg-navy text-white mx-4 mt-4 px-4 py-3 rounded-lg font-medium"
+                  onClick={() => setIsOpen(false)}
                 >
-                  <Phone size={20} className="text-orange" />
-                  <span>+94 11 234 5678</span>
-                </a>
+                  Get Quote <ArrowRight size={16} />
+                </Link>
               </div>
             </Container>
           </motion.div>
